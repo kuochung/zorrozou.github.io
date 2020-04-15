@@ -99,7 +99,7 @@ nice值虽然不是priority，但是它确实可以影响进程的优先级。�
 	 chrt [options] -p <pid>
 
 	Policy options:
-	 -b, --batch          set policy to SCHED_OTHER
+	 -b, --batch          set policy to SCHED_BATCH
 	 -f, --fifo           set policy to SCHED_FIFO
 	 -i, --idle           set policy to SCHED_IDLE
 	 -o, --other          set policy to SCHED_OTHER
@@ -119,7 +119,7 @@ nice值虽然不是priority，但是它确实可以影响进程的优先级。�
 
 	For more details see chrt(1).
 
-我们先来关注显示出的Policy options部分，会发现系统给个种进程提供了5种调度策略。但是这里并没有说明的是，这五种调度策略是分别给两种进程用的，对于实时进程可以用的调度策略是：SCHED_FIFO、SCHED_RR，而对于非实时进程则是：SCHED_OTHER、SCHED_OTHER、SCHED_IDLE。
+我们先来关注显示出的Policy options部分，会发现系统给个种进程提供了5种调度策略。但是这里并没有说明的是，这五种调度策略是分别给两种进程用的，对于实时进程可以用的调度策略是：SCHED_FIFO、SCHED_RR，而对于非实时进程则是：SCHED_BATCH、SCHED_IDLE、SCHED_OTHER。
 
 系统的整体优先级策略是：如果系统中存在需要执行的实时进程，则优先执行实时进程。直到实时进程退出或者主动让出CPU时，才会调度执行非实时进程。实时进程可以指定的优先级范围为1-99，将一个要执行的程序以实时方式执行的方法为：
 
